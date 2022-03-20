@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import Button from "../components/Button";
+import Button from "../components/common/Button";
 
 export default {
   title: "Components/Common",
@@ -11,7 +11,7 @@ const Template = (args) => <Button {...args} />;
 export const button = Template.bind({});
 button.args = {
   label: "Button",
-  isWhite: false,
-  isSmall: false,
+  isUppercase: false,
+  className: "",
   onClick: action("onClick"),
 };
