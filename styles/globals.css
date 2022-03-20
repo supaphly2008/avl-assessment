@@ -8,3 +8,10 @@
     @apply text-white;
   }
 }
+.slider-thumb::-webkit-slider-thumb {
+  @apply h-[20px] w-[20px] cursor-pointer appearance-none rounded-full border-4 border-solid border-orange bg-black;
+}
+
+/* .slider-thumb::-webkit-slider-thumb:hover {
+  @apply bg-gray;
+} */
