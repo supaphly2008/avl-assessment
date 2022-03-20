@@ -25,8 +25,8 @@ const Search = () => {
       </>
       <hr className="my-[30px] text-gray" />
       <div>
-        <div className="text-[24px]"># of results per page</div>
-        <div className="text-[48px] font-bold">
+        <div className="text-[24px]"># Of results per page</div>
+        <div className="my-[20px] text-[48px] font-bold leading-[1]">
           30 <span className="text-[16px] font-normal tracking-[0.15px]">Results</span>
         </div>
         <Slider range={inputRange} onChange={onRangeChange} />
