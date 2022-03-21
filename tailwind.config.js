@@ -8,10 +8,12 @@ module.exports = {
       xs: { max: "375px" },
     },
     colors: {
-      black: "#000000",
+      black: "#121212",
+      "black--lighter": "#1B1B1B",
       white: "#ffffff",
       orange: "#FF9B33",
       gray: "#5d5d5d",
+      "gray--lighter": "#B2B2B2",
       "gray--scale": "rgba(255, 255, 255, 0.5)",
       transparent: "transparent",
     },
