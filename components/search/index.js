@@ -8,14 +8,15 @@ export const CompState = {
 };
 
 const SearchContainer = () => {
-  const [component, setComponent] = useState(CompState.SEARCH_RESULT);
+  const [component, setComponent] = useState(CompState.SEARCH);
+  const [searchResult, setSearchResult] = useState([]);
 
   const comp = () => {
     if (component === CompState.SEARCH) {
-      return <Search setComponent={setComponent} />;
+      return <Search setComponent={setComponent} searchResult={searchResult} setSearchResult={setSearchResult} />;
     }
     if (component === CompState.SEARCH_RESULT) {
-      return <SearchResult setComponent={setComponent} />;
+      return <SearchResult setComponent={setComponent} searchResult={searchResult} />;
     }
   };
 

@@ -2,7 +2,7 @@ import { CompState } from "../search";
 import ImageCard from "../common/ImageCard";
 import Button from "../common/Button";
 
-const SearchResult = ({ setComponent }) => {
+const SearchResult = ({ setComponent, searchResult }) => {
   const onBackClick = () => {
     setComponent(CompState.SEARCH);
   };
@@ -18,21 +18,9 @@ const SearchResult = ({ setComponent }) => {
         <div className="text-[30px]">Results</div>
       </div>
       <div className="flex flex-wrap gap-[34px] overflow-auto">
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
+        {searchResult.data.data.map((result) => (
+          <ImageCard key={result.id} title={result.name} username={result.username} src={result.avater} alt={result.name} />
+        ))}
       </div>
       <Button className="mt-[39px]" label="more" onClick={onMoreClick} />
     </div>
