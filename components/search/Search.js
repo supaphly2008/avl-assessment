@@ -1,11 +1,12 @@
 import { useState } from "react";
-import Input from "./common/Input";
-import Button from "./common/Button";
-import Slider from "./common/Slider";
+import Input from "../common/Input";
+import Button from "../common/Button";
+import Slider from "../common/Slider";
+import { CompState } from "./index";
 
 const inputRange = [3, 6, 9, 12, 15, 50];
 
-const Search = () => {
+const Search = ({ setComponent }) => {
   const [searchText, setSearchText] = useState("");
   const [range, setRange] = useState(0);
 
@@ -15,6 +16,7 @@ const Search = () => {
 
   const onSearchClick = () => {
     console.log("click", range);
+    setComponent(CompState.SEARCH_RESULT);
   };
 
   return (
