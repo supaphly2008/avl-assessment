@@ -17,11 +17,7 @@ module.exports = {
       "gray--scale": "rgba(255, 255, 255, 0.5)",
       transparent: "transparent",
     },
-    extend: {
-      backgroundImage: {
-        "slider--gradient": "linear-gradient(to right, #FF5C01,#FFD25F);",
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };
