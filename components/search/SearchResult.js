@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { CompState } from "../search";
 import ImageCard from "../common/ImageCard";
 import Button from "../common/Button";
@@ -6,10 +6,15 @@ import Button from "../common/Button";
 import { getSearch } from "../../api";
 
 const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm, setSearchTerm, page, setPage, range }) => {
+  const [isInit, setIsInit] = useState(true);
   const onBackClick = () => {
+    resetResult();
+    setComponent(CompState.SEARCH);
+  };
+
+  const resetResult = () => {
     setSearchTerm("");
     setSearchResult([]);
-    setComponent(CompState.SEARCH);
   };
 
   const onMoreClick = async () => {
@@ -17,9 +22,13 @@ const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm,
   };
 
   useEffect(async () => {
+    if (isInit) {
+      setIsInit(false);
+      return;
+    }
     const result = await getSearch(page, range, searchTerm);
     console.log("result more", result);
-  }, [page, searchResult]);
+  }, [page]);
 
   return (
     <div className="flex h-full flex-col">
