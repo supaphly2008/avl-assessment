@@ -1,6 +1,9 @@
+import { useEffect } from "react";
 import { CompState } from "../search";
 import ImageCard from "../common/ImageCard";
 import Button from "../common/Button";
+
+import { getSearch } from "../../api";
 
 const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm, setSearchTerm, page, setPage, range }) => {
   const onBackClick = () => {
@@ -9,9 +12,14 @@ const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm,
     setComponent(CompState.SEARCH);
   };
 
-  const onMoreClick = () => {
-    console.log("more");
+  const onMoreClick = async () => {
+    setPage(page + 1);
   };
+
+  useEffect(async () => {
+    const result = await getSearch(page, range, searchTerm);
+    console.log("result more", result);
+  }, [page, searchResult]);
 
   return (
     <div className="flex h-full flex-col">
