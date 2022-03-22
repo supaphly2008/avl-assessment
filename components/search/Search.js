@@ -9,12 +9,16 @@ import { getSearch } from "../../api";
 
 const inputRange = [3, 6, 9, 12, 15, 50];
 
-const Search = ({ setComponent, setSearchResult, searchResult }) => {
-  const [searchText, setSearchText] = useState("");
-  const [range, setRange] = useState(inputRange[0]); // page size: ;
-  const debouncedSearchTerm = useDebounce(searchText, 500);
-  const [buttonDisabled, setButtonDisabled] = useState(false);
+const Search = ({ setComponent, setSearchResult, searchResult, range, setRange, searchTerm, setSearchTerm }) => {
+  // const [searchText, setSearchText] = useState("");
+  // const [range, setRange] = useState(inputRange[0]); // page size: ;
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
   const [isSearching, setIsSearching] = useState(false); // is searching (loading)
+
+  useEffect(() => {
+    setRange(inputRange[0]);
+  }, []);
 
   useEffect(async () => {
     if (debouncedSearchTerm) {
@@ -36,7 +40,7 @@ const Search = ({ setComponent, setSearchResult, searchResult }) => {
 
   // input text change
   const onInputChange = (e) => {
-    setSearchText(e.target.value);
+    setSearchTerm(e.target.value);
   };
 
   useEffect(() => {
@@ -51,7 +55,7 @@ const Search = ({ setComponent, setSearchResult, searchResult }) => {
     <div className="relative h-full">
       <>
         <div className="mb-[20px] text-[24px]">Search</div>
-        <Input placeholder="Keyword" value={searchText} onChange={onInputChange} />
+        <Input placeholder="Keyword" value={searchTerm} onChange={onInputChange} />
       </>
       <hr className="my-[30px] text-gray" />
       <div>

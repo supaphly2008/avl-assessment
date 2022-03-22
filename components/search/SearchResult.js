@@ -2,8 +2,10 @@ import { CompState } from "../search";
 import ImageCard from "../common/ImageCard";
 import Button from "../common/Button";
 
-const SearchResult = ({ setComponent, searchResult }) => {
+const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm, setSearchTerm, page, setPage, range }) => {
   const onBackClick = () => {
+    setSearchTerm("");
+    setSearchResult([]);
     setComponent(CompState.SEARCH);
   };
 
