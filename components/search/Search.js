@@ -23,9 +23,9 @@ const Search = ({ setComponent, setSearchResult, searchResult, range, setRange, 
   useEffect(async () => {
     if (debouncedSearchTerm) {
       const result = await getSearch(1, range, debouncedSearchTerm);
-      setSearchResult(result);
+      setSearchResult(result.data);
     } else {
-      setSearchResult([]);
+      setSearchResult(null);
     }
   }, [debouncedSearchTerm, range]);
 
@@ -44,7 +44,7 @@ const Search = ({ setComponent, setSearchResult, searchResult, range, setRange, 
   };
 
   useEffect(() => {
-    if (searchResult.data?.total === 0 || !debouncedSearchTerm) {
+    if (searchResult?.total === 0 || !debouncedSearchTerm) {
       setButtonDisabled(true);
     } else {
       setButtonDisabled(false);
@@ -61,7 +61,7 @@ const Search = ({ setComponent, setSearchResult, searchResult, range, setRange, 
       <div>
         <div className="text-[24px]"># Of results per page</div>
         <div className="my-[20px] text-[48px] font-bold leading-[1]">
-          {searchResult.data?.total || 0} <span className="text-[16px] font-normal tracking-[0.15px]">Results</span>
+          {searchResult?.total || 0} <span className="text-[16px] font-normal tracking-[0.15px]">Results</span>
         </div>
         <Slider range={inputRange} onChange={onRangeChange} />
       </div>

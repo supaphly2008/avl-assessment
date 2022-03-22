@@ -9,7 +9,7 @@ export const CompState = {
 
 const SearchContainer = () => {
   const [component, setComponent] = useState(CompState.SEARCH);
-  const [searchResult, setSearchResult] = useState([]);
+  const [searchResult, setSearchResult] = useState(null);
   const [page, setPage] = useState(1);
   const [range, setRange] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");

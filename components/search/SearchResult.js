@@ -27,7 +27,7 @@ const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm,
       return;
     }
     const result = await getSearch(page, range, searchTerm);
-    console.log("result more", result);
+    setSearchResult((prev) => ({ ...prev, page: result.data.page, data: [...prev.data, ...result.data.data] }));
   }, [page]);
 
   return (
@@ -37,7 +37,7 @@ const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm,
         <div className="text-[30px]">Results</div>
       </div>
       <div className="flex flex-wrap gap-[34px] overflow-auto">
-        {searchResult.data.data.map((result) => (
+        {searchResult?.data.map((result) => (
           <ImageCard key={result.id} title={result.name} username={result.username} src={result.avater} alt={result.name} />
         ))}
       </div>
