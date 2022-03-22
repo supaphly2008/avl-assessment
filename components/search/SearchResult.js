@@ -15,11 +15,14 @@ const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm,
   const resetResult = () => {
     setSearchTerm("");
     setSearchResult([]);
+    setPage(1);
   };
 
   const onMoreClick = async () => {
     setPage(page + 1);
   };
+
+  const isMoreButtonDisabled = searchResult.page === searchResult.totalPages;
 
   useEffect(async () => {
     if (isInit) {
@@ -37,11 +40,11 @@ const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm,
         <div className="text-[30px]">Results</div>
       </div>
       <div className="flex flex-wrap gap-[34px] overflow-auto">
-        {searchResult?.data.map((result) => (
-          <ImageCard key={result.id} title={result.name} username={result.username} src={result.avater} alt={result.name} />
+        {searchResult?.data.map((result, index) => (
+          <ImageCard key={`${index}_${result.id}`} title={result.name} username={result.username} src={result.avater} alt={result.name} />
         ))}
       </div>
-      <Button className="mt-[39px]" label="more" onClick={onMoreClick} />
+      <Button isDisabled={isMoreButtonDisabled} className="mt-[39px]" label="more" onClick={onMoreClick} />
     </div>
   );
 };
