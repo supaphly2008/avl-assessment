@@ -10,11 +10,8 @@ import { getSearch } from "../../api";
 const inputRange = [3, 6, 9, 12, 15, 50];
 
 const Search = ({ setComponent, setSearchResult, searchResult, range, setRange, searchTerm, setSearchTerm }) => {
-  // const [searchText, setSearchText] = useState("");
-  // const [range, setRange] = useState(inputRange[0]); // page size: ;
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
   const [buttonDisabled, setButtonDisabled] = useState(true);
-  const [isSearching, setIsSearching] = useState(false); // is searching (loading)
 
   useEffect(() => {
     setRange(inputRange[0]);
