@@ -54,7 +54,7 @@ const FollowsPanel = () => {
         </li>
       </ul>
       {/* content */}
-      <div className="flex-1 overflow-auto py-[35px] px-[16px]">{Comp()}</div>
+      {Comp()}
     </div>
   );
 };

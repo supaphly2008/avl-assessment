@@ -1,7 +1,21 @@
 import axios from "axios";
 
 const getSearch = (page = 1, pageSize = 10, keyword = "") => {
-  return axios.get(`https://avl-frontend-exam.herokuapp.com/api/users/all?page=${page}&pageSize=${pageSize}&keyword=${keyword}`);
+  return axios.get(`https://avl-frontend-exam.herokuapp.com/api/users/all?page=${page}&pageSize=${pageSize}&keyword=${keyword}`).then((res) => {
+    return {
+      data: res.data,
+      status: res.status,
+    };
+  });
 };
 
-export default { getSearch };
+const getFollowers = (page = 1, pageSize = 20) => {
+  return axios.get(`https://avl-frontend-exam.herokuapp.com/api/users/all?page=${page}&pageSize=${pageSize}`).then((res) => {
+    return {
+      data: res.data,
+      status: res.status,
+    };
+  });
+};
+
+export default { getSearch, getFollowers };

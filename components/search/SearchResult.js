@@ -6,7 +6,7 @@ import Button from "../common/Button";
 import api from "../../api";
 
 const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm, setSearchTerm, page, setPage, range }) => {
-  const [isInit, setIsInit] = useState(true);
+  const [isInit, setIsInit] = useState(true); // TODO: change to useRef
   const onBackClick = () => {
     resetResult();
     setComponent(CompState.SEARCH);
@@ -19,6 +19,7 @@ const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm,
   };
 
   const onMoreClick = async () => {
+    // TODO: fix multiple click bug
     setPage(page + 1);
   };
 
@@ -30,6 +31,7 @@ const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm,
       return;
     }
     const result = await api.getSearch(page, range, searchTerm);
+    console.log(result);
     setSearchResult((prev) => ({ ...prev, page: result.data.page, data: [...prev.data, ...result.data.data] }));
   }, [page]);
 
