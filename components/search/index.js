@@ -8,18 +8,33 @@ export const CompState = {
 };
 
 const SearchContainer = () => {
-  const [component, setComponent] = useState(CompState.SEARCH_RESULT);
+  const [component, setComponent] = useState(CompState.SEARCH);
+  const [searchResult, setSearchResult] = useState(null);
+  const [page, setPage] = useState(1);
+  const [range, setRange] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const comp = () => {
+  const comp = (Props) => {
     if (component === CompState.SEARCH) {
-      return <Search setComponent={setComponent} />;
+      return <Search {...Props} />;
     }
     if (component === CompState.SEARCH_RESULT) {
-      return <SearchResult setComponent={setComponent} />;
+      return <SearchResult {...Props} />;
     }
   };
 
-  return comp();
+  return comp({
+    setComponent,
+    component,
+    searchResult,
+    setSearchResult,
+    page,
+    setPage,
+    range,
+    setRange,
+    searchTerm,
+    setSearchTerm,
+  });
 };
 
 export default SearchContainer;

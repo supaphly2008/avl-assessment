@@ -1,15 +1,37 @@
+import { useEffect, useState } from "react";
 import { CompState } from "../search";
 import ImageCard from "../common/ImageCard";
 import Button from "../common/Button";
 
-const SearchResult = ({ setComponent }) => {
+import { getSearch } from "../../api";
+
+const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm, setSearchTerm, page, setPage, range }) => {
+  const [isInit, setIsInit] = useState(true);
   const onBackClick = () => {
+    resetResult();
     setComponent(CompState.SEARCH);
   };
 
-  const onMoreClick = () => {
-    console.log("more");
+  const resetResult = () => {
+    setSearchTerm("");
+    setSearchResult([]);
+    setPage(1);
   };
+
+  const onMoreClick = async () => {
+    setPage(page + 1);
+  };
+
+  const isMoreButtonDisabled = searchResult.page === searchResult.totalPages;
+
+  useEffect(async () => {
+    if (isInit) {
+      setIsInit(false);
+      return;
+    }
+    const result = await getSearch(page, range, searchTerm);
+    setSearchResult((prev) => ({ ...prev, page: result.data.page, data: [...prev.data, ...result.data.data] }));
+  }, [page]);
 
   return (
     <div className="flex h-full flex-col">
@@ -18,23 +40,11 @@ const SearchResult = ({ setComponent }) => {
         <div className="text-[30px]">Results</div>
       </div>
       <div className="flex flex-wrap gap-[34px] overflow-auto">
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
+        {searchResult?.data.map((result, index) => (
+          <ImageCard key={`${index}_${result.id}`} title={result.name} username={result.username} src={result.avater} alt={result.name} />
+        ))}
       </div>
-      <Button className="mt-[39px]" label="more" onClick={onMoreClick} />
+      <Button isDisabled={isMoreButtonDisabled} className="mt-[39px]" label="more" onClick={onMoreClick} />
     </div>
   );
 };
