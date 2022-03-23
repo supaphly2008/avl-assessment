@@ -1,5 +1,5 @@
-// import Search from "../components/Search";
 import Search from "../components/search";
+import FollowsPanel from "../components/follows";
 
 export default function Home() {
   return (
@@ -11,7 +11,9 @@ export default function Home() {
         <Search />
       </div>
       {/* followers */}
-      <div className="w-[375px] bg-black--lighter">Followers</div>
+      <div className="w-[375px] bg-black--lighter">
+        <FollowsPanel />
+      </div>
     </div>
   );
 }
