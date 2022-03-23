@@ -3,7 +3,7 @@ import { CompState } from "../search";
 import ImageCard from "../common/ImageCard";
 import Button from "../common/Button";
 
-import { getSearch } from "../../api";
+import api from "../../api";
 
 const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm, setSearchTerm, page, setPage, range }) => {
   const [isInit, setIsInit] = useState(true);
@@ -29,7 +29,7 @@ const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm,
       setIsInit(false);
       return;
     }
-    const result = await getSearch(page, range, searchTerm);
+    const result = await api.getSearch(page, range, searchTerm);
     setSearchResult((prev) => ({ ...prev, page: result.data.page, data: [...prev.data, ...result.data.data] }));
   }, [page]);
 
