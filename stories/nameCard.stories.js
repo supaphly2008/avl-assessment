@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import NameCard from "../components/common/NameCard";
 
 export default {
@@ -15,4 +16,5 @@ nameCard.args = {
   alt: "image",
   name: "John",
   username: "@John123",
+  onClick: action("onClick"),
 };
