@@ -15,4 +15,5 @@ iconButton.args = {
   Icon: HomeIcon,
   onClick: action("onClick"),
   label: "Home",
+  hasNotification: true,
 };
