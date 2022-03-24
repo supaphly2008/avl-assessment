@@ -1,5 +1,9 @@
 const Tags = () => {
-  return <div>Tags</div>;
+  return (
+    <div>
+      <div className="text-[30px]">Tags</div>
+    </div>
+  );
 };
 
 export default Tags;
