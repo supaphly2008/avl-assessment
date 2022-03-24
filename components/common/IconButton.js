@@ -1,8 +1,8 @@
-const IconButton = ({ isActive, Icon, onClick, label, hasNotification = false }) => {
+const IconButton = ({ isActive, Icon, onClick, label, hasNotification = false, className = "" }) => {
   const active = isActive ? "text-[white]" : "text-[#5d5d5d]";
 
   return (
-    <div className="relative inline-flex cursor-pointer flex-col items-center" onClick={onClick}>
+    <div className={`${className} relative inline-flex cursor-pointer flex-col items-center`} onClick={onClick}>
       {hasNotification && <div className="absolute right-0 top-[-6px] h-[7px] w-[7px] rounded-full bg-[#00D1FF]" />}
 
       <Icon isActive={isActive} />
