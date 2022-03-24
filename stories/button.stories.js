@@ -14,4 +14,5 @@ button.args = {
   isUppercase: false,
   className: "",
   onClick: action("onClick"),
+  isDisabled: false,
 };

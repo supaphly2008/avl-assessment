@@ -5,7 +5,7 @@ import Slider from "../common/Slider";
 import { CompState } from "./index";
 import useDebounce from "../../hooks/useDebounce";
 
-import { getSearch } from "../../api";
+import api from "../../api";
 
 const inputRange = [3, 6, 9, 12, 15, 50];
 
@@ -19,7 +19,7 @@ const Search = ({ setComponent, setSearchResult, searchResult, range, setRange, 
 
   useEffect(async () => {
     if (debouncedSearchTerm) {
-      const result = await getSearch(1, range, debouncedSearchTerm);
+      const result = await api.getSearch(1, range, debouncedSearchTerm);
       setSearchResult(result.data);
     } else {
       setSearchResult(null);
