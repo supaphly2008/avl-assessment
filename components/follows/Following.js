@@ -3,7 +3,7 @@ import NameCard from "../common/NameCard";
 import api from "../../api";
 
 const Following = () => {
-  const [followers, setFollowers] = useState(null);
+  const [following, setFollowing] = useState(null);
   const [page, setPage] = useState(1);
   const containerRef = useRef(null);
 
@@ -11,7 +11,7 @@ const Following = () => {
 
   useEffect(async () => {
     const res = await api.getFollowing(page);
-    setFollowers(res.data);
+    setFollowing(res.data);
   }, []);
 
   useEffect(async () => {
@@ -20,13 +20,13 @@ const Following = () => {
       return;
     }
     const res = await api.getFollowing(page);
-    setFollowers((prev) => ({ ...prev, ...res.data, page: res.data.page, data: [...prev.data, ...res.data.data] }));
+    setFollowing((prev) => ({ ...prev, ...res.data, page: res.data.page, data: [...prev.data, ...res.data.data] }));
   }, [page]);
 
   const handleScroll = () => {
     const { scrollTop, scrollHeight, clientHeight } = containerRef.current;
     const isEnd = scrollTop + clientHeight === scrollHeight;
-    const hasMore = followers.page !== followers.totalPages;
+    const hasMore = following.page !== following.totalPages;
     if (containerRef.current) {
       if (isEnd && hasMore) {
         setPage(page + 1);
@@ -36,8 +36,8 @@ const Following = () => {
 
   return (
     <div ref={containerRef} className="flex-1 overflow-auto py-[35px] px-[16px]" onScroll={handleScroll}>
-      {followers?.data.map((follower, index) => (
-        <NameCard key={`${index}_${follower.id}`} isOutline={false} buttonText="Following" src={follower.avatar} alt={follower.name} name={follower.name} username={follower.username} className="mb-[21px]" />
+      {following?.data.map((follow, index) => (
+        <NameCard key={`${index}_${follow.id}`} isOutline={false} buttonText="Following" src={follow.avatar} alt={follow.name} name={follow.name} username={follow.username} className="mb-[21px]" />
       ))}
     </div>
   );
