@@ -25,10 +25,10 @@ const Followers = () => {
 
   const handleScroll = () => {
     const { scrollTop, scrollHeight, clientHeight } = containerRef.current;
-
+    const isEnd = scrollTop + clientHeight === scrollHeight;
+    const hasMore = followers.page !== followers.totalPages;
     if (containerRef.current) {
-      if (scrollTop + clientHeight === scrollHeight) {
-        // TODO: check if page === pageSize
+      if (isEnd && hasMore) {
         setPage(page + 1);
       }
     }
