@@ -11,6 +11,12 @@
   }
 }
 
+.logo {
+  background: linear-gradient(to right, #ff5c01, #ffd25f);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .input-range {
   -webkit-appearance: none;
   margin-right: 15px;

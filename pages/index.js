@@ -1,11 +1,14 @@
 import Search from "../components/search";
 import FollowsPanel from "../components/follows";
+import Nav from "../components/nav";
 
 export default function Home() {
   return (
     <div className="flex h-screen">
       {/* nav */}
-      <div className="w-[80px] bg-black--lighter">Nav</div>
+      <div className="w-[80px] bg-black--lighter">
+        <Nav />
+      </div>
       {/* main */}
       <div className="flex-1 px-[130px] pt-[54px] pb-[87px]">
         <Search />
