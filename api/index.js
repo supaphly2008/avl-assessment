@@ -18,4 +18,13 @@ const getFollowers = (page = 1, pageSize = 20) => {
   });
 };
 
-export default { getSearch, getFollowers };
+const getFollowing = (page = 1, pageSize = 20) => {
+  return axios.get(`https://avl-frontend-exam.herokuapp.com/api/users/friends?page=${page}&pageSize=${pageSize}`).then((res) => {
+    return {
+      data: res.data,
+      status: res.status,
+    };
+  });
+};
+
+export default { getSearch, getFollowers, getFollowing };
