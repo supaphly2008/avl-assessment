@@ -37,7 +37,7 @@ const Following = () => {
   return (
     <div ref={containerRef} className="flex-1 overflow-auto py-[35px] px-[16px]" onScroll={handleScroll}>
       {followers?.data.map((follower, index) => (
-        <NameCard key={`${index}_${follower.id}`} src={follower.avatar} name={follower.name} username={follower.username} className="mb-[21px]" />
+        <NameCard key={`${index}_${follower.id}`} isOutline={false} buttonText="Following" src={follower.avatar} alt={follower.name} name={follower.name} username={follower.username} className="mb-[21px]" />
       ))}
     </div>
   );

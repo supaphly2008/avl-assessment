@@ -34,10 +34,18 @@ const Followers = () => {
     }
   };
 
+  const showOutline = (follower) => {
+    return !follower.isFollowing;
+  };
+
+  const showButtonText = (follower) => {
+    return follower.isFollowing ? "Following" : "Follow";
+  };
+
   return (
     <div ref={containerRef} className="flex-1 overflow-auto py-[35px] px-[16px]" onScroll={handleScroll}>
       {followers?.data.map((follower, index) => (
-        <NameCard key={`${index}_${follower.id}`} src={follower.avatar} name={follower.name} username={follower.username} className="mb-[21px]" />
+        <NameCard key={`${index}_${follower.id}`} isOutline={showOutline(follower)} buttonText={showButtonText(follower)} src={follower.avatar} alt={follower.name} name={follower.name} username={follower.username} className="mb-[21px]" />
       ))}
     </div>
   );
