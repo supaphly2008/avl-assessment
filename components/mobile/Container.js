@@ -1,12 +1,12 @@
 import Header from "./Header";
 import Footer from "./Footer";
 
-const Container = ({ children }) => {
+const Container = ({ children, activeTab, setActiveTab }) => {
   return (
-    <div>
+    <div className="flex flex-1 flex-col">
       <Header />
       {children}
-      <Footer />
+      <Footer activeTab={activeTab} setActiveTab={setActiveTab} />
     </div>
   );
 };
