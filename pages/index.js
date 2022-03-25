@@ -26,8 +26,10 @@ export default function Home() {
       <div className="w-[80px] bg-black--lighter">
         <Nav activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
+
       {/* main */}
       <div className="flex-1 px-[130px] pt-[54px] pb-[87px]">{contentComp()}</div>
+
       {/* followers */}
       {width > hideFollowsWidth && (
         <div className="w-[375px] bg-black--lighter">
