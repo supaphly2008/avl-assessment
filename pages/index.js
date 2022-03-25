@@ -11,7 +11,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState(NavTabs.HOME);
   const width = useResize();
 
-  const contentComp = () => {
+  const ContentComp = () => {
     if (activeTab === NavTabs.HOME) {
       return <Search />;
     }
@@ -20,15 +20,19 @@ export default function Home() {
     }
   };
 
+  const MainContainer = <div className="flex-1 px-[130px] pt-[54px] pb-[87px] md:px-[70px] sm:px-[30px] sm:pt-0">{ContentComp()}</div>;
+
   return (
     <div className="flex h-screen">
       {/* nav */}
-      <div className="w-[80px] bg-black--lighter">
-        <Nav activeTab={activeTab} setActiveTab={setActiveTab} />
-      </div>
+      {width > 639 && (
+        <div className="w-[80px] bg-black--lighter">
+          <Nav activeTab={activeTab} setActiveTab={setActiveTab} />
+        </div>
+      )}
 
       {/* main */}
-      <div className="flex-1 px-[130px] pt-[54px] pb-[87px]">{contentComp()}</div>
+      {MainContainer}
 
       {/* followers */}
       {width > hideFollowsWidth && (
