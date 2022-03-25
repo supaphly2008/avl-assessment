@@ -3,9 +3,13 @@ import Search from "../components/search";
 import Tags from "../components/tags";
 import FollowsPanel from "../components/follows";
 import Nav, { NavTabs } from "../components/nav";
+import useResize from "../hooks/useResize";
+
+const hideFollowsWidth = 1440;
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState(NavTabs.HOME);
+  const width = useResize();
 
   const contentComp = () => {
     if (activeTab === NavTabs.HOME) {
@@ -25,9 +29,11 @@ export default function Home() {
       {/* main */}
       <div className="flex-1 px-[130px] pt-[54px] pb-[87px]">{contentComp()}</div>
       {/* followers */}
-      <div className="w-[375px] bg-black--lighter">
-        <FollowsPanel />
-      </div>
+      {width > hideFollowsWidth && (
+        <div className="w-[375px] bg-black--lighter">
+          <FollowsPanel />
+        </div>
+      )}
     </div>
   );
 }

@@ -7,7 +7,6 @@ const Tags = () => {
 
   useEffect(async () => {
     const res = await api.getTags();
-    console.log("res", res.data);
     setTags(res.data);
   }, []);
 
