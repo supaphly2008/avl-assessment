@@ -26,5 +26,13 @@ const getFollowing = (page = 1, pageSize = 20) => {
     };
   });
 };
+const getTags = () => {
+  return axios.get("https://avl-frontend-exam.herokuapp.com/api/tags").then((res) => {
+    return {
+      data: res.data,
+      status: res.status,
+    };
+  });
+};
 
-export default { getSearch, getFollowers, getFollowing };
+export default { getSearch, getFollowers, getFollowing, getTags };
