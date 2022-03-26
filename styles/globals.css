@@ -10,6 +10,11 @@
     @apply text-white;
   }
 }
+html,
+body,
+#__next {
+  height: 100%;
+}
 
 .logo {
   background: linear-gradient(to right, #ff5c01, #ffd25f);

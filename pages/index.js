@@ -43,7 +43,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-full">
       {ShowContent()}
       {/* followers */}
       {width > hideFollowsWidth && (
