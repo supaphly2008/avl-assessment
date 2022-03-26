@@ -21,7 +21,7 @@ export default function Home() {
     }
   };
 
-  const MainContainer = <div className="flex-1 px-[130px] pt-[54px] pb-[87px] md:px-[70px] sm:overflow-auto sm:px-[30px] sm:pt-0">{ContentComp()}</div>;
+  const MainContainer = <div className="flex-1 px-[130px] pt-[54px] pb-[87px] md:px-[70px] sm:overflow-auto sm:px-[30px] sm:pb-[30px] sm:pt-0">{ContentComp()}</div>;
 
   const ShowContent = () => {
     if (width >= 640) {

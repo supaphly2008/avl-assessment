@@ -12,7 +12,7 @@ const Tags = () => {
 
   return (
     <div className="flex h-full flex-col">
-      <div className="text-[30px]">Tags</div>
+      <div className="text-[24px]">Tags</div>
       <div className="mt-[24px] flex flex-wrap gap-x-[24px] gap-y-[36px] overflow-auto">
         {tags.map((tag, index) => (
           <Tag key={`${tag.id}_${index}`} tagText={tag.name} title={tag.name} desc={`${tag.count} Results`} />
