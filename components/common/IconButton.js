@@ -4,7 +4,7 @@ const IconButton = ({ isActive, Icon, onClick, label, hasNotification = false, c
   return (
     <div className={`${className} relative inline-flex cursor-pointer flex-col items-center`} onClick={onClick}>
       {hasNotification && <div className="absolute right-0 top-[-6px] h-[7px] w-[7px] rounded-full bg-[#00D1FF]" />}
-      <Icon className="h-[24px] w-[24px]" isActive={isActive} />
+      <Icon isActive={isActive} />
       <div className={`${active} text-[12px]`}>{label}</div>
     </div>
   );

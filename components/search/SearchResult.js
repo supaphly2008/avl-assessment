@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { CompState } from "../search";
 import ImageCard from "../common/ImageCard";
 import Button from "../common/Button";
@@ -6,7 +6,8 @@ import Button from "../common/Button";
 import api from "../../api";
 
 const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm, setSearchTerm, page, setPage, range }) => {
-  const [isInit, setIsInit] = useState(true); // TODO: change to useRef
+  const isInit = useRef(true);
+
   const onBackClick = () => {
     resetResult();
     setComponent(CompState.SEARCH);
@@ -26,20 +27,19 @@ const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm,
   const isMoreButtonDisabled = searchResult.page === searchResult.totalPages;
 
   useEffect(async () => {
-    if (isInit) {
-      setIsInit(false);
+    if (isInit.current) {
+      isInit.current = false;
       return;
     }
     const result = await api.getSearch(page, range, searchTerm);
-    console.log(result);
     setSearchResult((prev) => ({ ...prev, page: result.data.page, data: [...prev.data, ...result.data.data] }));
   }, [page]);
 
   return (
     <div className="flex h-full flex-col">
-      <div className="relative left-[-36.5px] mb-[24px] flex items-center">
-        <img className="mr-[31.73px] cursor-pointer" src="/icons/left-arrow.png" alt="arrow back" onClick={onBackClick} />
-        <div className="text-[30px]">Results</div>
+      <div className="relative left-[-36.5px] mb-[24px] flex items-center sm:left-0">
+        <img className="mr-[31.73px] cursor-pointer sm:mr-[19.88px]" src="/icons/left-arrow.png" alt="arrow back" onClick={onBackClick} />
+        <div className="text-[24px]">Results</div>
       </div>
       <div className="flex flex-wrap gap-[34px] overflow-auto">
         {searchResult?.data.map((result, index) => (
