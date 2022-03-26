@@ -35,4 +35,5 @@ Open [http://localhost:6006](http://localhost:6006) with your browser to see com
 
 ## Deployment
 
-The site is currently deployed on Netlify. To view the site, please visit: [https://avl.netlify.app/](https://avl.netlify.app/)
+The site is currently deployed on Netlify.  
+To view the site, please visit: [https://avl.netlify.app/](https://avl.netlify.app/)
