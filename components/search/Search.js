@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Input from "../common/Input";
 import Button from "../common/Button";
 import Slider from "../common/Slider";
@@ -12,9 +12,10 @@ const inputRange = [3, 6, 9, 12, 15, 50];
 const Search = ({ setComponent, setSearchResult, searchResult, range, setRange, searchTerm, setSearchTerm }) => {
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
   const [buttonDisabled, setButtonDisabled] = useState(true);
+  const defaultSliderValue = useRef(2);
 
   useEffect(() => {
-    setRange(inputRange[0]);
+    setRange(inputRange[defaultSliderValue.current]);
   }, []);
 
   useEffect(async () => {
@@ -60,7 +61,7 @@ const Search = ({ setComponent, setSearchResult, searchResult, range, setRange, 
         <div className="my-[20px] text-[48px] font-bold leading-[1]">
           {searchResult?.total || 0} <span className="text-[16px] font-normal tracking-[0.15px]">Results</span>
         </div>
-        <Slider range={inputRange} onChange={onRangeChange} />
+        <Slider range={inputRange} defaultValue={defaultSliderValue.current} onChange={onRangeChange} />
       </div>
       <hr className="mt-[30px] text-gray" />
       <Button isDisabled={buttonDisabled} className="absolute bottom-0" label="search" onClick={onSearchClick} />
