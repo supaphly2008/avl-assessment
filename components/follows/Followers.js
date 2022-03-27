@@ -35,7 +35,7 @@ const Followers = () => {
     const isEnd = scrollTop + clientHeight === scrollHeight;
     const hasMore = followers.page !== followers.totalPages;
     if (containerRef.current) {
-      if (isEnd && hasMore) {
+      if (isEnd && hasMore && !hasMoreLoading) {
         setPage(page + 1);
       }
     }
