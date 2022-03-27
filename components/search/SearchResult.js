@@ -43,13 +43,19 @@ const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm,
 
   const showResults = () => {
     if (isLoading) {
-      return <SearchLoading count={10} />;
+      return (
+        <div className="flex-1 overflow-auto">
+          <SearchLoading count={10} />
+        </div>
+      );
     } else {
       return (
-        <div className="flex flex-1 flex-wrap gap-[34px] overflow-auto">
-          {searchResult?.data.map((result, index) => (
-            <ImageCard key={`${index}_${result.id}`} title={result.name} username={result.username} src={result.avater} alt={result.name} />
-          ))}
+        <div className="flex-1 overflow-auto">
+          <div className="flex flex-wrap gap-[34px]">
+            {searchResult?.data.map((result, index) => (
+              <ImageCard key={`${index}_${result.id}`} title={result.name} username={result.username} src={result.avater} alt={result.name} />
+            ))}
+          </div>
         </div>
       );
     }
