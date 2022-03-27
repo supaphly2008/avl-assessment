@@ -41,7 +41,7 @@ const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm,
         <img className="mr-[31.73px] cursor-pointer sm:mr-[19.88px]" src="/icons/left-arrow.png" alt="arrow back" onClick={onBackClick} />
         <div className="text-[24px]">Results</div>
       </div>
-      <div className="flex flex-wrap gap-[34px] overflow-auto">
+      <div className="flex flex-1 flex-wrap gap-[34px] overflow-auto">
         {searchResult?.data.map((result, index) => (
           <ImageCard key={`${index}_${result.id}`} title={result.name} username={result.username} src={result.avater} alt={result.name} />
         ))}
