@@ -18,7 +18,27 @@ module.exports = {
       "gray--scale": "rgba(255, 255, 255, 0.5)",
       transparent: "transparent",
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        loading: "linear-gradient(90deg, #5d5d5d 0%, #787878 15%, #5d5d5d 50%)",
+      },
+      keyframes: {
+        shine: {
+          "0%": {
+            backgroundPosition: "5px",
+          },
+          "40%": {
+            backgroundPosition: "40px",
+          },
+          "100%": {
+            backgroundPosition: "40px",
+          },
+        },
+      },
+      animation: {
+        shine: "shine 2s infinite ease-out",
+      },
+    },
   },
   plugins: [],
 };
