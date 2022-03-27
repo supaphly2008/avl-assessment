@@ -1,7 +1,7 @@
 import FollowsLoading from "../components/loading/FollowsLoading";
 
 export default {
-  title: "Components/Common",
+  title: "Components/Common/Loading",
   component: FollowsLoading,
 };
 

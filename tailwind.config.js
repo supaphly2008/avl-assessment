@@ -34,9 +34,21 @@ module.exports = {
             backgroundPosition: "40px",
           },
         },
+        "search-shine": {
+          "0%": {
+            backgroundPosition: "5px",
+          },
+          "40%": {
+            backgroundPosition: "250px",
+          },
+          "100%": {
+            backgroundPosition: "250px",
+          },
+        },
       },
       animation: {
         shine: "shine 2s infinite ease-out",
+        "search-shine": "search-shine 2s infinite ease-out",
       },
     },
   },
