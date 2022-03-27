@@ -10,7 +10,7 @@ const SearchLoading = ({ count = 1 }) => {
   };
 
   return (
-    <div className="flex flex-wrap gap-[34px]">
+    <div className="flex flex-1 flex-wrap gap-[34px]">
       {[...Array(count)].map((_, index) => (
         <Loading key={index} />
       ))}
