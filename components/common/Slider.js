@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 
-const Slider = ({ min = "0", max = "5", defaultValue = "0", step = "1", onChange, range = [] }) => {
+const Slider = ({ min = "0", max = "5", defaultValue = 0, step = "1", onChange, range = [] }) => {
   const inputRef = useRef(null);
 
   const onInput = () => {
