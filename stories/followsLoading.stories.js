@@ -8,4 +8,7 @@ export default {
 const Template = (args) => <FollowsLoading {...args} />;
 
 export const followsLoading = Template.bind({});
-followsLoading.args = {};
+followsLoading.args = {
+  className: "",
+  count: 3,
+};
