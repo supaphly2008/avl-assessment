@@ -16,16 +16,22 @@ const Tags = () => {
 
   const showTags = () => {
     if (isLoading) {
-      return <TagsLoading count={10} />;
+      return <TagsLoading className="mt-[24px]" count={10} />;
     } else {
-      return tags.map((tag, index) => <Tag key={`${tag.id}_${index}`} tagText={tag.name} title={tag.name} desc={`${tag.count} Results`} />);
+      return (
+        <div className="mt-[24px] grid grid-cols-tag gap-x-[24px] gap-y-[36px] overflow-auto">
+          {tags.map((tag, index) => (
+            <Tag key={`${tag.id}_${index}`} tagText={tag.name} title={tag.name} desc={`${tag.count} Results`} />
+          ))}
+        </div>
+      );
     }
   };
 
   return (
     <div className="flex h-full flex-col">
       <div className="text-[24px]">Tags</div>
-      <div className="mt-[24px] flex flex-wrap gap-x-[24px] gap-y-[36px] overflow-auto">{showTags()}</div>
+      {showTags()}
     </div>
   );
 };

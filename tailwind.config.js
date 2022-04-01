@@ -19,6 +19,10 @@ module.exports = {
       transparent: "transparent",
     },
     extend: {
+      gridTemplateColumns: {
+        search: "repeat(auto-fill,minmax(219px, 1fr))",
+        tag: "repeat(auto-fill,minmax(150px, 1fr))",
+      },
       backgroundImage: {
         loading: "linear-gradient(90deg, #5d5d5d 0%, #787878 15%, #5d5d5d 50%)",
       },

@@ -51,7 +51,7 @@ const SearchResult = ({ setComponent, searchResult, setSearchResult, searchTerm,
     } else {
       return (
         <div className="flex-1 overflow-auto">
-          <div className="flex flex-wrap gap-[34px]">
+          <div className="grid grid-cols-search gap-[34px]">
             {searchResult?.data.map((result, index) => (
               <ImageCard key={`${index}_${result.id}`} title={result.name} username={result.username} src={result.avater} alt={result.name} />
             ))}
